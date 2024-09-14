@@ -1,11 +1,11 @@
-// Importing necessary modules
-const express = require("express"); // Express is a web framework for Node.js
-const http = require("http"); // HTTP module to create the server
-const { Server } = require("socket.io"); // Socket.IO is used for real-time communication
+
+const express = require("express"); 
+const http = require("http"); 
+const { Server } = require("socket.io"); 
 const connection = require("./db.js");
 const mongoose = require("mongoose");
 const Chat = require("./models/chat.js");
-// Initializing the Express app
+
 const app = express();
 app.use(express.json());
 connection();
@@ -16,7 +16,7 @@ const server = http.createServer(app);
 // Initializing a new instance of Socket.IO server
 const io = new Server(server, {
   cors: {
-    origin: "*", // Allowing CORS for all origins
+    origin: "*", 
   },
 });
 // Handling a new connection to the Socket.IO server
@@ -56,7 +56,7 @@ io.on("connection", (socket) => {
   });
 });
 
-// Starting the server on port 3001
+
 server.listen(3001, () => {
   console.log("server is running on 3001");
 });
